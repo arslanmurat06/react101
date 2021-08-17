@@ -1,9 +1,9 @@
 # React Simple Counter Project witth Redux and Hooks
 
-useDispatch\n
-useSelector
-combineReducers
-bindActionCreators()
+*useDispatch
+*useSelector
+*combineReducers
+*bindActionCreators()
 
 are used.
 
