@@ -71,10 +71,19 @@ table.table th i {
   margin: 0 5px;
   cursor: pointer;
 }
+
+.btn-act {
+  padding: 4px;
+}
+
+table.table tr th:last-child {
+  width: 150px;
+}
+
 table.table td:last-child i {
   opacity: 0.9;
   font-size: 22px;
-  margin: 0 5px;
+  margin: 0 25px;
 }
 table.table td a {
   font-weight: bold;
