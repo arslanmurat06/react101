@@ -1,3 +1,5 @@
+import { ThunkDispatch } from "redux-thunk";
+
 export interface User{
     messsage:string;
     username:string;
@@ -11,6 +13,12 @@ export interface UserState{
     loading:boolean;
     error:string;
 }
+
+export interface LoginForm{
+    username:"",
+    password:""
+}
+
 
 interface LOGIN_START{
     type:"LOGIN_START";
@@ -28,3 +36,4 @@ interface LOGIN_ERROR{
 
 
 export type UserAction = LOGIN_START | LOGIN_SUCCESS | LOGIN_ERROR;
+export type UserDispatch =ThunkDispatch<UserState, void, UserAction>;

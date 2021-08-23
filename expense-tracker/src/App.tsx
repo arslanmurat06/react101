@@ -1,6 +1,7 @@
 import SignUp from './components/SignUp';
 import {Route} from 'react-router-dom';
 import { Layout, Menu, Breadcrumb } from 'antd';
+import Login from './components/Login';
  
 const { Header, Content, Footer } = Layout;
 
@@ -20,6 +21,7 @@ function App() {
       <div className="site-layout-background" style={{ padding: 24, minHeight: 380 }}>
        
     <Route path="/register" component={SignUp}/>
+    <Route path="/login" component={Login}/>
 
       </div>
     </Content>

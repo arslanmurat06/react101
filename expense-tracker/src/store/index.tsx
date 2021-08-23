@@ -3,7 +3,7 @@ import { UserState } from "../types/user";
 import userReducer from "./reducers/userReducer";
 
 
-interface AppState{
+export interface AppState{
     user:UserState
 }
 

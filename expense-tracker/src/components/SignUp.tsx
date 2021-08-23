@@ -3,11 +3,10 @@ import { Form, Input, Button, message } from 'antd';
 import { useHistory } from "react-router-dom";
 import api from '../utils/api';
 import { AxiosResponse } from 'axios';
+import showError from '../utils/showError';
 
 
-const showError = (er:string)=>{
-    message.error(er);
-}
+
 
 const  SignUp = ()=>  {
 
