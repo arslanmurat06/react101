@@ -1,10 +1,10 @@
 # Employee Management App
 
 Created with;
-React
-ContextAPI
-Hooks
-React Bootstrap
+ - React
+ - `ContextAPI` for state management
+ - Hooks
+ - For UI `React Bootstrap` used
 
 
 
