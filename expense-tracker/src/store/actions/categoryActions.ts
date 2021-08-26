@@ -15,7 +15,6 @@ try {
 }
 
 export const addCategory =(form: CategoryForm)=> async (dispatch:CategoryDispatch)=>{
-    console.log("burardaa");
         dispatch({type:"ADD_CATEGORY_START"});
 try {
     const response = await api.post<Category>("categories",form);
@@ -23,7 +22,30 @@ try {
     dispatch({type:"ADD_CATEGORY_SUCCESS", payload:response.data});
     
 } catch (error) {
-    console.log(error);
     dispatch({type:"ADD_CATEGORY_ERROR",error});
+}
+}
+
+export const updateCategory =(form: Partial<CategoryForm>, categoryID:number)=> async (dispatch:CategoryDispatch)=>{
+    dispatch({type:"UPDATE_CATEGORY_START"});
+try {
+const response = await api.put<Category>("categories/"+categoryID,form);
+
+dispatch({type:"UPDATE_CATEGORY_SUCCESS", payload:response.data});
+
+} catch (error) {
+dispatch({type:"UPDATE_CATEGORY_ERROR",error});
+}
+}
+
+export const removeCategory =(id: number)=> async (dispatch:CategoryDispatch)=>{
+        dispatch({type:"REMOVE_CATEGORY_START"});
+try {
+   await api.delete("categories/"+id);
+    dispatch({type:"REMOVE_CATEGORY_SUCCESS", payload:id});
+    
+} catch (error) {
+    console.log(error);
+    dispatch({type:"REMOVE_CATEGORY_ERROR",error});
 }
 }

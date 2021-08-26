@@ -20,6 +20,18 @@ const categoryReducer = (state:CategoryState = defaultState, action:CategoryActi
             return {...state, data: [action.payload, ...state.data]};                
         case "ADD_CATEGORY_ERROR":
             return {...state, loading:false, error:action.error}
+        case "UPDATE_CATEGORY_START":
+            return {...state, loading:true,error:""};    
+        case "UPDATE_CATEGORY_SUCCESS":
+            return {...state, loading :false, data: state.data.map(c=>c.id ===action.payload.id ? action.payload :c)};                
+        case "UPDATE_CATEGORY_ERROR":
+            return {...state, loading:false, error:action.error}
+        case "REMOVE_CATEGORY_START":
+            return {...state, loading:true,error:""};    
+        case "REMOVE_CATEGORY_SUCCESS":
+            return {...state, loading :false, data: state.data.filter(c=>c.id !==action.payload)};                
+        case "REMOVE_CATEGORY_ERROR":
+            return {...state, loading:false, error:action.error}    
         default:
             return state;
     }
