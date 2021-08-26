@@ -2,6 +2,8 @@
 
 ## Available Scripts
 
+For state management `Redux toolkit` used
+
 In the project directory, you can run:
 
 ### `npm start`
