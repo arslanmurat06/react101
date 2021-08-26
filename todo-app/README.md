@@ -2,8 +2,8 @@
 
 Created with React.
 
-React Hooks used.
-LocalStorage used.
+ - `Hooks` used.
+ - `localStorage` used to store data.
 
 ## Available Scripts
 
