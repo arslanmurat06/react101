@@ -1,2 +1,4 @@
 # react101
-My learning progress projects
+My learning process..
+- Will be master of React.
+- Coming soon.. :)
