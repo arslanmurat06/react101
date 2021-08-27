@@ -7,7 +7,7 @@ export const login= (cred:LoginForm)=> async(dispatch:UserDispatch)=>{
 
 
   try {
-      var response = await api.post<User>("/users/login",cred);
+      var response = await api().post<User>("/users/login",cred);
       dispatch({type:"LOGIN_SUCCESS",payload:response.data});
       localStorage.setItem("token",response.data.token);
   } catch (error) {
