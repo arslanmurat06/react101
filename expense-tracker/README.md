@@ -1,4 +1,4 @@
-# Expense Trackker
+# Expense Tracker
 
 Expense Trackker application has been implemented on my react learning journey thanks to [sametweb](https://github.com/sametweb) and his youtube videos [react dersleri](https://www.youtube.com/c/ReactDersleri/videos).
 
