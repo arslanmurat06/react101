@@ -45,7 +45,6 @@ try {
     dispatch({type:"REMOVE_CATEGORY_SUCCESS", payload:id});
     
 } catch (error) {
-    console.log(error);
     dispatch({type:"REMOVE_CATEGORY_ERROR",error});
 }
 }

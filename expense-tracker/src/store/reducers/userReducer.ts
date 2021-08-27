@@ -16,6 +16,8 @@ const userReducer = (state: UserState =defaultState, action:UserAction)=>{
             return {...state, data:action.payload, loading:false, error:""};
         case "LOGIN_ERROR":
             return{...state, error:action.error};
+        case "LOGOUT_SUCCESS":
+            return{...state, data:{} as User};
         default:
             return state;
     }

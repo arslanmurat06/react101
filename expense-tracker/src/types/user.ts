@@ -34,6 +34,10 @@ interface LOGIN_ERROR{
     error:string;
 }
 
+interface LOGOUT{
+    type:"LOGOUT_SUCCESS";
+}
 
-export type UserAction = LOGIN_START | LOGIN_SUCCESS | LOGIN_ERROR;
+
+export type UserAction = LOGIN_START | LOGIN_SUCCESS | LOGIN_ERROR|LOGOUT;
 export type UserDispatch =ThunkDispatch<UserState,void, UserAction>;

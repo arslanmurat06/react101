@@ -1,4 +1,4 @@
-import { LoginForm, User, UserDispatch } from "../../types/user";
+import { LoginForm, User, UserAction, UserDispatch, UserState } from "../../types/user";
 import api from "../../utils/api";
 
 export const login= (cred:LoginForm)=> async(dispatch:UserDispatch)=>{
@@ -16,3 +16,8 @@ export const login= (cred:LoginForm)=> async(dispatch:UserDispatch)=>{
   }
 }
 
+
+export const logout = ()=> (dispatch:UserDispatch)=>{
+  localStorage.removeItem("token");
+  dispatch({type:"LOGOUT_SUCCESS"});
+}

@@ -2,12 +2,12 @@ import { Table, Tag, Space,Modal,Button, Form,Input,Select, Spin } from 'antd';
 import { Category, CategoryForm } from '../types/category';
 import { useDispatch,useSelector } from 'react-redux';
 import { useEffect,useState } from 'react';
-import { addCategory, getCategories, updateCategory } from '../store/actions/categoryActions';
+import { addCategory, getCategories, removeCategory, updateCategory } from '../store/actions/categoryActions';
 import { AppState } from '../store';
 import {SketchPicker} from 'react-color';
 import {DeleteOutlined, EditOutlined} from '@ant-design/icons';
 
-type Mode = "new"|"edit";
+type Mode = "new"|"edit" |"delete";
 const Categories = ()=> {
 
     const dispatch = useDispatch();
@@ -28,19 +28,20 @@ const Categories = ()=> {
       const [mode, setMode] = useState<Mode>("new");
       const [form, setForm] = useState<CategoryForm>(initialForm);
       const [updateID, setUpdateID] =useState<number | null>(null);
+      const [deleteID, setDeleteID] =useState<number | null>(null);
     
 
       const handleEdit= (cat:Category)=>{
       showModal("edit");
-      // setForm({...form, name:cat.name, type: cat.type ==="expense" ? "expense": "income", color:cat.color});
-
       setUpdateID(cat.id);
       setForm(cat);
       }
 
       const handleDelete =(id:number)=>
       {
-        console.log(`I will delete you ${id} `)
+        setMode("delete");
+        setDeleteID(id);
+        setIsModalVisible(true);
       }
 
       const showModal = (mode:Mode) => {
@@ -49,12 +50,14 @@ const Categories = ()=> {
       };
     
       const handleOk = () => {  
-        if(mode == "edit"){
+        if(mode === "edit"){
          dispatch(updateCategory(form,updateID as number));
         }
-        else{
+        else if(mode ==="new"){
           dispatch(addCategory(form));
         }
+        else
+        dispatch(removeCategory(deleteID as number));
         setIsModalVisible(false);
         setMode("new");
         setForm(initialForm);
@@ -66,7 +69,6 @@ const Categories = ()=> {
         setForm(initialForm);
       };
 
-    console.log(data,error,loading);
     const columns = [
         {
           title: 'Name',
@@ -100,9 +102,12 @@ const Categories = ()=> {
       <Button style={{margin:5}} type="primary" onClick={()=>showModal("new")}>
        New Category
       </Button>
-      <Modal title={mode === "new" ? "Create new category": "Update category"}
-      okButtonProps={{ disabled : !form.name}}
+      <Modal title={mode === "new" ? "Create new category": mode === "delete" ? "Delete Category":  "Update category"}
+      okButtonProps={{ disabled : !form.name && mode!=="delete"}}
       visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
+        
+         {mode ==="delete" ?  (<p>Are you sure to delete?</p>) :(
+
       <Form labelCol={{ span: 6 }}
         wrapperCol={{ span: 14 }}
         layout="horizontal">
@@ -119,6 +124,7 @@ const Categories = ()=> {
         <SketchPicker color={form.color} onChange={color => setForm({...form, color:color.hex})}/>
         </Form.Item>
         </Form>
+         )}
       </Modal>
         <Table columns={columns} dataSource={data} />
         </>
