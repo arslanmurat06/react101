@@ -5,6 +5,7 @@ Created with;
  - `ContextAPI` for state management
  - Hooks
  - For UI `React Bootstrap` used
+ - Data stored into local storage
 
 
 
