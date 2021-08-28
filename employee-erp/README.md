@@ -7,7 +7,7 @@ Created with;
  - For UI `React Bootstrap` used
  - Data stored into local storage
 
-
+Deployes app: [Employee Manager](https://react101-arslanmurat06.vercel.app/)
 
 ## Available Scripts
 
