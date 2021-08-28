@@ -5,6 +5,7 @@ Created with React.
  - `Hooks` used.
  - `localStorage` used to store data.
 
+Deployed app: [TODOApp](https://mytodo-lmnubs83n-arslanmurat06.vercel.app/)
 ## Available Scripts
 
 In the project directory, you can run:
