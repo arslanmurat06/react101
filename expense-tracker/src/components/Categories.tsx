@@ -126,7 +126,7 @@ const Categories = ()=> {
         </Form>
          )}
       </Modal>
-        <Table columns={columns} dataSource={data} />
+        <Table columns={columns} dataSource={data} rowKey="id" />
         </>
     );
 }
