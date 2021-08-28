@@ -10,6 +10,8 @@ In this application;
 - `localStorage` used to store token.
 
 
+Go to deployed app: [ExpenseTracker](https://expensetracker-git-master-arslanmurat06.vercel.app/login)
+
 ## Available Scripts
 
 In the project directory, you can run:
