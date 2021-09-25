@@ -9,6 +9,7 @@ import { useState } from "react";
 import { login } from "../features/loginSlice";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { mobile } from "../responsive/mobile";
+import { Redirect } from "react-router";
 
 const Wrapper = styled.div`
   width: 100vw;
@@ -110,8 +111,8 @@ export const ModernLogin = () => {
 
   const loginSlice = useAppSelector((state) => state.loginSlice);
 
-  // const {username, setUsername} = useState("")
-  // const {password, setPassword} = useState("")
+  const [username, setUsername] = useState<string>("mor_2314");
+  const [password, setPassword] = useState<string>("83r5^_");
 
   const handleLogin = () => {
     dispatch(login());
@@ -125,13 +126,18 @@ export const ModernLogin = () => {
           <Icon>
             <EmailIcon style={{ color: "#209eb4" }} />
           </Icon>
-          <Input placeholder="Username" />
+          <Input placeholder="Username" value={username} disabled={true} />
         </FormItemWrapper>
         <FormItemWrapper>
           <Icon>
             <VpnKeyIcon style={{ color: "#209eb4" }} />
           </Icon>
-          <Input placeholder="Password" type="password" />
+          <Input
+            placeholder="Password"
+            type="password"
+            disabled={true}
+            value={password}
+          />
         </FormItemWrapper>
         <AccountTextWrapper>
           <AccountText onClick={() => console.log("tıklandı")}>
@@ -141,16 +147,13 @@ export const ModernLogin = () => {
         {loginSlice.loading ? (
           <CircularProgress />
         ) : loginSlice.data ? (
-          `Login Success. This is the token ${loginSlice.data.token}`
+          <Redirect to={"/welcome"} />
         ) : (
           <Button onClick={() => handleLogin()}>
             <LockIcon style={{ color: "#209eb4" }} />
           </Button>
         )}
       </LoginWrapper>
-      {/* <ImageWrapper>
-        <Image src="https://postergg.savebutonu.com/wp-content/uploads/2020/01/Spiderman-1.jpg" />
-      </ImageWrapper> */}
     </Wrapper>
   );
 };
