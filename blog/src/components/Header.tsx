@@ -31,14 +31,19 @@ const Image = styled.img`
   object-fit: cover;
 `;
 
+const DropDownMenu = styled.div`
+  width: 100%;
+  background-color: gray;
+`;
+
 export const Header = () => {
   return (
     <Container>
       <TitleContainer>
-        <SmallTitle>React & Node</SmallTitle>
+        <SmallTitle>Personal & Professional</SmallTitle>
         <LargeTitle>Blog</LargeTitle>
       </TitleContainer>
-      <Image src="https://images.pexels.com/photos/1167355/pexels-photo-1167355.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" />
+      <Image src="https://images.pexels.com/photos/167699/pexels-photo-167699.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" />
     </Container>
   );
 };

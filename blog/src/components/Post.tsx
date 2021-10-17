@@ -1,4 +1,8 @@
+import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { CategoryDTO } from "../types/CategoryDTO";
+import { IPost } from "../types/PostDTO";
 
 const Container = styled.div`
   width: 300px;
@@ -40,7 +44,7 @@ const Title = styled.span`
   cursor: pointer;
 `;
 
-const Date = styled.span`
+const DateComp = styled.span`
   font-family: "Lora", serif;
   font-style: italic;
   fonts-size: 13px;
@@ -61,28 +65,30 @@ const Description = styled.p`
   -webkit-box-orient: vertical;
 `;
 
-export const Post = () => {
+export const Post: React.FC<IPost> = ({ data }) => {
   return (
     <Container>
-      <Image src="https://images.pexels.com/photos/6685428/pexels-photo-6685428.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260" />
+      {data.photo && <Image src={data.photo} />}
+
       <InfoContainer>
         <Info>
           <Cats>
-            <CatTitle>Music</CatTitle>
-            <CatTitle>Life</CatTitle>
+            {data.categories != null
+              ? data.categories.map((c: string) => (
+                  <Link to={`/${c}`}>
+                    <CatTitle>{c}</CatTitle>
+                  </Link>
+                ))
+              : null}
           </Cats>
-          <Title>How do you manage to be successfull?</Title>
+          <Link to={`post/${data._id}`}>
+            <Title>{data.title}</Title>
+          </Link>
           <hr />
-          <Date>1 hour ago</Date>
+          <DateComp>{new Date(data.createdAt).toDateString()}</DateComp>
         </Info>
       </InfoContainer>
-      <Description>
-        Lorem Ipsum is simply dummy text of the printing and typesetting
-        industry. Lorem Ipsum has been the industry's standard dummy text ever
-        since the 1500s, when an unknown printer took a galley of type and
-        scrambled it to make a type specimen book. It has survived not only five
-        centuries, but also the leap into electronic typesetting,
-      </Description>
+      <Description>{data.desc}</Description>
     </Container>
   );
 };

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { mobile } from "../responsive/mobile";
 
 const Container = styled.div`
   flex: 3;

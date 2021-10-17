@@ -1,4 +1,8 @@
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { getAllPosts } from "../api/posts";
+import { useAppDispatch, useAppSelector } from "../store";
 import { Post } from "./Post";
 
 const Container = styled.div`
@@ -9,14 +13,19 @@ const Container = styled.div`
 `;
 
 export const Posts = () => {
+  const dispatch = useAppDispatch();
+
+  const postSlice = useAppSelector((state) => state.posts);
+
+  useEffect(() => {
+    dispatch(getAllPosts());
+  }, []);
+
   return (
     <Container>
-      <Post />
-      <Post />
-      <Post />
-      <Post />
-      <Post />
-      <Post />
+      {postSlice.data?.map((d) => {
+        return <Post key={d._id} data={d} />;
+      })}
     </Container>
   );
 };
